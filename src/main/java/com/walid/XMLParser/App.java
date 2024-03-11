@@ -1,8 +1,16 @@
-/* the basic api:
+/*
+  limitation (to be implemented):
+   - doesn't parse comments
+   - doesn't parse self-closing tags
+   - doesn't parse nested strings
+
+  the basic api:
    - getElementByName(name);
    - getElementByAttribute(name, value);
    - getChildren(element);
 */
+
+
 
 package com.walid.XMLParser;
 
@@ -21,7 +29,7 @@ public class App
 	var developedBy = project.getAttrs().get("developedBy");
 	var mavenDeps = xmlParser.getElementsByName("dependencies").get(0);
 	var deps = xmlParser.getChildren(mavenDeps);
-      var groupId = xmlParser.getElementsByName("groupId");
+	var groupId = xmlParser.getElementsByName("groupId");
 	
     }
 }
