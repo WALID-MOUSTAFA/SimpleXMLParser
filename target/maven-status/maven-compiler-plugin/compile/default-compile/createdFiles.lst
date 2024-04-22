@@ -1,0 +1,8 @@
+com/walid/XMLParser/Tokenizer.class
+com/walid/XMLParser/Parser.class
+com/walid/XMLParser/Token.class
+com/walid/XMLParser/ParsingException.class
+com/walid/XMLParser/XMLParser.class
+com/walid/XMLParser/Node.class
+com/walid/XMLParser/App.class
+com/walid/XMLParser/TokenType.class

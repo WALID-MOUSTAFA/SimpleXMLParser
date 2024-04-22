@@ -28,6 +28,7 @@ public class Tokenizer {
 			matchDoubleQuote();
 			matchSingleQuote();
 			matchSlash();
+			matchExplinationMark();
 			this.position++;
 		}
     }
@@ -103,6 +104,11 @@ public class Tokenizer {
 		}
 	}
 
+	private  void matchExplinationMark() {
+		if(this.current() == '!') {
+			this.tokens.add(new Token(TokenType.EXP_MARK, "!"));
+		}
+	}
 
 	
 	
@@ -132,6 +138,7 @@ public class Tokenizer {
 		|| ch == '.';
 	}
 
+	
 	private char peek() {
 		return this.string.charAt(this.position+1);
 	}

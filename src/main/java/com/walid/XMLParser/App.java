@@ -1,35 +1,33 @@
-/*
-  limitation (to be implemented):
-   - doesn't parse comments
-   - doesn't parse self-closing tags
-   - doesn't parse nested strings
-
-  the basic api:
-   - getElementByName(name);
-   - getElementByAttribute(name, value);
-   - getChildren(element);
+/**   
+	  the basic api:
+	  - getElementByName(name);
+	  - getElementByAttribute(name, value);
+	  - getChildren(element);
 */
-
-
-
 package com.walid.XMLParser;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
+import java.io.File;
+import java.io.FileInputStream;
+
+
 
 public class App 
 {
-    @SuppressWarnings("unused")
+
     public static void main( String[] args ) throws IOException, ParsingException
     {
-	InputStream inputStream = App.class.getClassLoader().getResourceAsStream("index.xml") ;
-	XMLParser xmlParser = new XMLParser(inputStream);
-	Node project = xmlParser.getElementsByName("project").get(0);
-	var developedBy = project.getAttrs().get("developedBy");
-	var mavenDeps = xmlParser.getElementsByName("dependencies").get(0);
-	var deps = xmlParser.getChildren(mavenDeps);
-	var groupId = xmlParser.getElementsByName("groupId");
+
+		if(args.length == 0) {
+			System.out.println("please choose a file");
+			System.exit(0);
+		}
+		File file = new File(args[0]);
+		FileInputStream fileInputStream = new FileInputStream(file);
+		XMLParser xmlParser = new XMLParser(fileInputStream);
+		Node version = xmlParser.getElementsByName("project").get(0);
+		System.out.println(version.getAttrs().get("xmlns:xsi"));
+	
 	
     }
 }
