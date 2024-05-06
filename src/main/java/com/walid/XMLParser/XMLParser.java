@@ -12,55 +12,55 @@ public class XMLParser {
     private List<Node> nodes;
     
     public XMLParser(InputStream inputStream) throws ParsingException, IOException{
-	String line;
-	StringBuilder stringBuilder = new StringBuilder();
-	BufferedReader bufferReader = new BufferedReader
-	    (new InputStreamReader(inputStream));
+		String line;
+		StringBuilder stringBuilder = new StringBuilder();
+		BufferedReader bufferReader = new BufferedReader
+			(new InputStreamReader(inputStream));
 	
-	while ((line = bufferReader.readLine() ) != null) {
-	    stringBuilder.append(line);
-	}
-	this.document = stringBuilder.toString();
-	List<Token> tokens = new Tokenizer(this.document).getTokens();
-	Parser parser = new Parser(tokens);
-	this.nodes =  parser.getNodes();
-	System.out.println("finished parsing");
+		while ((line = bufferReader.readLine() ) != null) {
+			stringBuilder.append(line);
+		}
+		this.document = stringBuilder.toString();
+		List<Token> tokens = new Tokenizer(this.document).getTokens();
+		Parser parser = new Parser(tokens);
+		this.nodes =  parser.getNodes();
+		System.out.println("finished parsing");
     }
 
 
 
     public List<Node> getElementsByName(String name) {
-	List<Node> result = this.nodes.stream().filter(e-> {
-		return e.getTag().equals(name);
-	}).toList();
-	return result;
+		List<Node> result = this.nodes.stream().filter(e-> {
+				return e.getTag().equals(name);
+			}).toList();
+		return result;
     }
 
     public List<Node> getElementsByAttribute(String attr, String value) {
-	List<Node> result = this.nodes.stream()
-	    .filter(e ->  e.getAttrs().keySet().contains(attr))
-	    .toList()
-	    .stream()
-	    .filter(e -> e.getAttrs().values().contains(value))
-	    .toList();
-	return result;
+		List<Node> result = this.nodes.stream()
+			.filter(e ->  e.getAttrs().keySet().contains(attr))
+			.toList()
+			.stream()
+			.filter(e -> e.getAttrs().values().contains(value))
+			.toList();
+		return result;
     }
 
     public List<Node> getChildren(Node node) {
-	List<Node> result = nodes
-	    .stream()
-	    .filter(e -> e.getParent() == node).toList();
-	return result;
+		List<Node> result = nodes
+			.stream()
+			.filter(e -> e.getParent() == node).toList();
+		return result;
     }
     
     public List<Node> getNodes() {
-	return this.nodes;
+		return this.nodes;
     }
 
     
 
     public String getDocument() {
-	return this.document;
+		return this.document;
     }
 	
 }

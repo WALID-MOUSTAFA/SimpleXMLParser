@@ -9,5 +9,5 @@ public enum TokenType {
     WHITESPACE,
     EQIAL,
     SLASH,
-	EXP_MARK
+	EXP_MARK, QuestionMark
 }

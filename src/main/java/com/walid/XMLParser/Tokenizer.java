@@ -29,9 +29,12 @@ public class Tokenizer {
 			matchSingleQuote();
 			matchSlash();
 			matchExplinationMark();
+			matchQuestionMark();
 			this.position++;
 		}
     }
+
+
 
 
 	private boolean isEOF() {
@@ -109,6 +112,13 @@ public class Tokenizer {
 			this.tokens.add(new Token(TokenType.EXP_MARK, "!"));
 		}
 	}
+
+	private void matchQuestionMark() {
+		if(this.current() == '?') {
+			this.tokens.add(new Token(TokenType.EXP_MARK, "?"));
+		}
+	}
+
 
 	
 	

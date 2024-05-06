@@ -116,7 +116,8 @@ public class Parser {
     private boolean tagStart() {
 		return current().getType() == TokenType.OPENINGANGLEBRACKET
 			&& this.peek().getType() != TokenType.SLASH
-			&& this.peek().getType() != TokenType.EXP_MARK;
+			&& this.peek().getType() != TokenType.EXP_MARK //evade comment
+			&& this.peek().getType() != TokenType.QuestionMark; //evade <?xml?> tag
     }
 
 	
